@@ -1,7 +1,10 @@
 // npx ts-node src/discriminated-unions.ts
 
+// When every type in a union contains a common property with literal types, TypeScript considers that to be a
+// discriminated union, and can narrow out the members of the union.
+
 class Circle {
-  type: 'circle' = 'circle' as const;
+  type: 'circle' = 'circle' as const; // common property 'type'
   radius: number;
 
   constructor(radius: number) {
@@ -10,7 +13,7 @@ class Circle {
 }
 
 class Square {
-  type: 'square' = 'square' as const;
+  type: 'square' = 'square' as const; // common property 'type'
   sideLength: number;
 
   constructor(sideLength: number) {

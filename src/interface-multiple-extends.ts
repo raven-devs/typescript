@@ -1,6 +1,6 @@
-// interface can extend one or more interfaces
-// class can extend only one class
-// class can implement one or more interfaces
+// an interface can extend one or more other interfaces
+// a class can extend only one other class
+// a class can implement one or more interfaces
 
 interface Colorful {
   color: string;

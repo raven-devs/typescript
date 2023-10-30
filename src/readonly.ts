@@ -1,3 +1,8 @@
+// readonly array
+const names: readonly string[] = ['Dylan'];
+names.push('Jack');
+
+// readonly class prop
 class Person {
   private readonly name: string;
 
@@ -7,6 +12,7 @@ class Person {
   }
 
   public getName(): string {
+    this.name = 'new name';
     return this.name;
   }
 }
@@ -14,6 +20,7 @@ class Person {
 const person = new Person('Jane');
 console.log(person.getName());
 
+// readonly interface prop
 interface SomeType {
   readonly prop: string;
 }

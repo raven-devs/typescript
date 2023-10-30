@@ -2,6 +2,7 @@
  * npx ts-node src/tuple.ts
  */
 
+// readonly
 const tuple: readonly [number, boolean, string] = [5, false, 'Coding God was here'];
 console.log({ tuple });
 
@@ -32,5 +33,9 @@ function readButtonInput2(name: string, version: number, ...input: boolean[]) {
 }
 readButtonInput2('someName', 12, true, true, false, true);
 readButtonInput2(12, 'someName', true, true, false, true);
+
+// named tuples
+const graph: [x: number, y: number] = [55.2, 41.3];
+console.log({ graph });
 
 export {};

@@ -1,4 +1,6 @@
-// conditional type
+// SomeType extends OtherType ? TrueType : FalseType;
+
+// basic
 interface Animal {
   live(): void;
 }
@@ -9,7 +11,7 @@ interface Dog extends Animal {
 
 type Example1 = Dog extends Animal ? number : string;
 
-// conditional type with generics
+// with generics
 interface IdLabel {
   id: number;
 }
@@ -24,9 +26,9 @@ function createLabel<T extends number | string>(idOrName: T): NameOrId<T> {
   throw 'Not implemented';
 }
 
-let a = createLabel('typescript');
-let b = createLabel(2.8);
-let c = createLabel(Math.random() ? 'hello' : 42);
+const a = createLabel('typescript');
+const b = createLabel(2.8);
+const c = createLabel(Math.random() ? 'hello' : 42);
 
 // conditional type with constraints
 type MessageOf<T> = T extends { message: unknown } ? T['message'] : never;
@@ -48,16 +50,8 @@ type Flatten<T> = T extends any[] ? T[number] : T;
 type Str = Flatten<string[]>;
 type Num = Flatten<number>;
 
-// infer keyword
-type Flatten2<Type> = Type extends Array<infer Item> ? Item : Type;
-
-type Str2 = Flatten<string[]>;
-type Num2 = Flatten<number>;
-
-type GetReturnType<Type> = Type extends (...args: never[]) => infer Return ? Return : never;
-
-type Num3 = GetReturnType<() => number>;
-type Str3 = GetReturnType<(x: string) => string>;
-type BoolArr = GetReturnType<(a: boolean, b: boolean) => boolean[]>;
+// extends with default
+type Fn<A extends string, B extends string = 'world'> = [A, B];
+type Result = Fn<'hello'>;
 
 export {};

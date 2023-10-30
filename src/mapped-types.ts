@@ -1,5 +1,5 @@
 // The mapping is done using this syntax [K in keyof T], where the `keyof` operator gives us property names as a string
-//  union type.
+// union type.
 
 // make all props of type `string`
 type User = {
@@ -13,29 +13,6 @@ type StringifyProp<T> = {
 
 type UserWithStringProps = StringifyProp<User>;
 
-// filter props that are of type `string`
-type FilterStringProp<T> = {
-  [K in keyof T as T[K] extends string ? K : never]: string;
-};
-
-type FilteredUser = FilterStringProp<User>;
-
-// to create a local type variable, we can use the infer keyword in our type language
-type A = 'foo'; // global scope variable
-type B = A extends infer C
-  ? C extends 'foo'
-    ? true
-    : false // *only* inside this expression, C represents A
-  : never;
-
-// we can also use the infer keyword to perform pattern matching
-type Str = 'foo-bar';
-type Bar = Str extends `foo-${infer rest}` ? rest : never;
-
-// extends with default
-type Fn<A extends string, B extends string = 'world'> = [A, B];
-type Result = Fn<'hello'>;
-
 // make all props boolean
 type OptionsFlags<Type> = {
   [Property in keyof Type]: boolean;
@@ -47,6 +24,18 @@ type Features = {
 };
 
 type FeatureOptions = OptionsFlags<Features>;
+
+// to create a local type variable, we can use the `infer` keyword
+type A = 'foo'; // global scope type variable
+type B = A extends infer C
+  ? C extends 'foo'
+    ? true
+    : false // *only* inside this expression, C represents A, it is a local type variable
+  : never;
+
+// we can use the `infer` keyword to perform pattern matching
+type Str = 'foo-bar';
+type Bar = Str extends `foo-${infer rest}` ? rest : never;
 
 // There are two additional modifiers which can be applied during mapping: readonly and ? which affect mutability and
 // optionality respectively. You can remove or add these modifiers by prefixing with - or +. If you don’t add a prefix,
@@ -82,6 +71,13 @@ type User2 = Concrete<MaybeUser>;
 // type MappedTypeWithNewProperties<Type> = {
 //   [Properties in keyof Type as NewKeyType]: Type[Properties]
 // }
+
+// filter props that are of type `string`
+type FilterStringProp<T> = {
+  [K in keyof T as T[K] extends string ? K : never]: string;
+};
+
+type FilteredUser = FilterStringProp<User>;
 
 // Remove the 'kind' property
 type RemoveKindField<Type> = {
