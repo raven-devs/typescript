@@ -2,7 +2,7 @@
  * npx ts-node src/tuple.ts
  */
 
-// readonly
+// readonly tuples
 const tuple: readonly [number, boolean, string] = [5, false, 'Coding God was here'];
 console.log({ tuple });
 
