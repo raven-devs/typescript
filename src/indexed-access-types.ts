@@ -19,4 +19,7 @@ type PersonEntryAge2 = PersonEntry['age'];
 type Tuple = [string, number, boolean];
 type TupleSecondElement = Tuple[2];
 
+type P3 = string['charAt'];
+type P4 = string[]['push'];
+
 export {};

@@ -1,6 +1,4 @@
-/**
- * npx ts-node src/enum.ts
- */
+// npx ts-node src/enum.ts
 
 // numeric enum, index starting from 0
 enum Directions {
@@ -36,5 +34,13 @@ enum Directions3 {
 }
 
 console.log({ Directions3 });
+
+enum Status {
+  Ready,
+  Waiting,
+}
+
+const status = Status.Ready;
+console.log({ status });
 
 export {};

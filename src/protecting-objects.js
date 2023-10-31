@@ -20,7 +20,7 @@ const person2 = {
 Object.seal(person2);
 delete person2.name; // will not delete
 person2.location = 'Boston'; // undefined
-console.log({ person2 });
+console.log({ person2: person2 });
 
 // Prevents any changes to an object
 const person3 = {
