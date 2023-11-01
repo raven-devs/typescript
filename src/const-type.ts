@@ -2,10 +2,6 @@
 
 // We can get a more precise and immutable type by writing as const after a literal.
 
-// type is { prop: string }
-const mutableObj = { prop: 'hello' };
-mutableObj.prop = 'hi';
-
 // type is { readonly prop: "hello" }
 const immutableObj = { prop: 'hello' } as const;
 immutableObj.prop = 'hi';

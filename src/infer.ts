@@ -1,4 +1,4 @@
-// The `infer` keyword serves as a local variable for a type value
+// The `infer` keyword serves as a local variable for a type value.
 
 type Flatten<Type> = Type extends Array<infer Item> ? Item : Type;
 
